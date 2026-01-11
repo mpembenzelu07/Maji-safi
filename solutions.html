@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Solutions - Maji Safi Africa</title>
+    <style>
+        /* Global Styles - Same as index.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1A5F7A;
+            --secondary: #2DCDDF;
+            --accent: #FF9A3C;
+            --dark: #0A1931;
+            --light: #F6F5F5;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation - Same as index.html */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo i {
+            color: var(--secondary);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+            background-color: rgba(26, 95, 122, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Solutions Hero */
+        .solutions-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .solutions-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .solutions-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Solutions Tabs */
+        .solutions-tabs {
+            padding: 60px 0 30px;
+            background-color: white;
+        }
+        
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background-color: #f8f9fa;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn:hover, .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Solutions Grid */
+        .solutions-section {
+            padding: 60px 0 100px;
+            background-color: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .solution-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .solution-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .solution-content {
+            padding: 30px;
+        }
+        
+        .solution-category {
+            display: inline-block;
+            background-color: rgba(26, 95, 122, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .solution-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .solution-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Impact Section */
+        .impact-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .impact-card {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+        }
+        
+        .impact-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(26, 95, 122, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+        
+        .impact-icon i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h3 {
+            color: var(--accent);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-col a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .solutions-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <i class="fas fa-tint"></i>
+                    Maji<span>Safi</span>
+                </a>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="solutions.html" class="active">Solutions</a></li>
+                    <li><a href="impact.html">Impact</a></li>
+                    <li><a href="invest.html">Invest</a></li>
+                    <li><a href="partner.html">Partner</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Solutions Hero -->
+    <section class="solutions-hero">
+        <div class="container">
+            <h1>Our Integrated Solutions</h1>
+            <p>Combining technology, infrastructure, and community partnerships for lasting impact across Africa</p>
+        </div>
+    </section>
+
+    <!-- Solutions Tabs -->
+    <section class="solutions-tabs">
+        <div class="container">
+            <div class="tabs-container">
+                <button class="tab-btn active" onclick="filterSolutions('all')">All Solutions</button>
+                <button class="tab-btn" onclick="filterSolutions('water')">Water Technology</button>
+                <button class="tab-btn" onclick="filterSolutions('health')">Health Services</button>
+                <button class="tab-btn" onclick="filterSolutions('infrastructure')">Infrastructure</button>
+                <button class="tab-btn" onclick="filterSolutions('data')">Data Analytics</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Grid -->
+    <section class="solutions-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technology & Innovation</h2>
+                <p>Each solution combines social impact with sustainable revenue generation</p>
+            </div>
+            <div class="solutions-grid">
+                <!-- Solution 1 -->
+                <div class="solution-card" data-category="water">
+                    <div class="solution-img" style="background-image: url('https://images.unsplash.com/photo-1548032885-5d1d5eaf3c2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="solution-content">
+                        <span class="solution-category">Water Technology</span>
+                        <h3>Smart Water ATMs</h3>
+                        <p>Solar-powered water purification kiosks with mobile payments. Women entrepreneurs manage each station, earning income while serving their communities.</p>
+                        <div class="solution-stats">
+                            <div class="stat">
+                                <div class="stat-value">$0.01</div>
+                                <div class="stat-label">Per Liter</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">95%</div>
+                                <div class="stat-label">Disease Reduction</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">3 hrs</div>
+                                <div class="stat-label">Time Saved</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Solution 2 -->
+                <div class="solution-card" data-category="health">
+                    <div class="solution-img" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="solution-content">
+                        <span class="solution-category">Health Services</span>
+                        <h3>Mobile Telemedicine</h3>
+                        <p>Fully equipped mobile clinics with testing labs and satellite connectivity. Doctors provide remote consultations and preventive care packages.</p>
+                        <div class="solution-stats">
+                            <div class="stat">
+                                <div class="stat-value">$5</div>
+                                <div class="stat-label">Monthly</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">24/7</div>
+                                <div class="stat-label">Access</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">80%</div>
+                                <div class="stat-label">Cost Reduction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Solution 3 -->
+                <div class="solution-card" data-category="infrastructure">
+                    <div class="solution-img" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="solution-content">
+                        <span class="solution-category">Infrastructure</span>
+                        <h3>Community Boreholes</h3>
+                        <p>Deep water boreholes with purification systems managed by community cooperatives. Revenue funds maintenance and community development.</p>
+                        <div class="solution-stats">
+                            <div class="stat">
+                                <div class="stat-value">5000</div>
+                                <div class="stat-label">People Served</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">25%</div>
+                                <div class="stat-label">ROI</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">20 yrs</div>
+                                <div class="stat-label">Lifespan</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Solution 4 -->
+                <div class="solution-card" data-category="data">
+                    <div class="solution-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="solution-content">
+                        <span class="solution-category">Data Analytics</span>
+                        <h3>IoT Water Monitoring</h3>
+                        <p>Real-time sensors monitor water quality, usage patterns, and equipment health. Predictive analytics prevent outbreaks and optimize maintenance.</p>
+                        <div class="solution-stats">
+                            <div class="stat">
+                                <div class="stat-value">99.9%</div>
+                                <div class="stat-label">Accuracy</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">60%</div>
+                                <div class="stat-label">Savings</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">Real-time</div>
+                                <div class="stat-label">Alerts</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Solution 5 -->
+                <div class="solution-card" data-category="water">
+                    <div class="solution-img" style="background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="solution-content">
+                        <span class="solution-category">Water Technology</span>
+                        <h3>Rainwater Harvesting</h3>
+                        <p>Large-scale rainwater collection and storage systems for schools and health facilities. Provides backup water during dry seasons.</p>
+                        <div class="solution-stats">
+                            <div class="stat">
+                                <div class="stat-value">50K</div>
+                                <div class="stat-label">Liters</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">6 mos</div>
+                                <div class="stat-label">Supply</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">100%</div>
+                                <div class="stat-label">Natural</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Solution 6 -->
+                <div class="solution-card" data-category="health">
+                    <div class="solution-img" style="background-image: url('https://images.unsplash.com/photo-1586773860418-dc22f8b874bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="solution-content">
+                        <span class="solution-category">Health Services</span>
+                        <h3>Water Testing Labs</h3>
+                        <p>Mobile and fixed laboratories for comprehensive water quality testing. Provides certification for communities and businesses.</p>
+                        <div class="solution-stats">
+                            <div class="stat">
+                                <div class="stat-value">50+</div>
+                                <div class="stat-label">Tests</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">2 hrs</div>
+                                <div class="stat-label">Results</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">$10</div>
+                                <div class="stat-label">Per Test</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cumulative Impact</h2>
+                <p>Since our founding, our solutions have created measurable positive change</p>
+            </div>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>500,000+</h3>
+                    <p>People Served with Clean Water</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>1,200+</h3>
+                    <p>Jobs Created</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>95%</h3>
+                    <p>Reduction in Water-borne Diseases</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>25,000+</h3>
+                    <p>Children Back in School</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Maji Safi Africa</h3>
+                    <p>Providing clean water and health services to millions across Africa through sustainable business models.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="solutions.html">Solutions</a></li>
+                        <li><a href="impact.html">Impact Stories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Investments</h3>
+                    <ul>
+                        <li><a href="invest.html">Investment Opportunities</a></li>
+                        <li><a href="#">Returns Calculator</a></li>
+                        <li><a href="#">Portfolio Performance</a></li>
+                        <li><a href="#">Investor Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+                        <li><i class="fas fa-phone"></i> +254 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> info@majisafiafrica.co.ke</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Maji Safi Africa. All rights reserved. | Clean Water for All</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Solutions Filtering
+        function filterSolutions(category) {
+            // Update active tab
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Filter solutions
+            const solutions = document.querySelectorAll('.solution-card');
+            solutions.forEach(solution => {
+                if (category === 'all' || solution.dataset.category === category) {
+                    solution.style.display = 'block';
+                } else {
+                    solution.style.display = 'none';
+                }
+            });
+        }
+        
+        // Add active class to current page
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            if(link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
