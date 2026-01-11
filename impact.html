@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact Stories - Maji Safi Africa</title>
+    <style>
+        /* Global Styles - Same as index.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1A5F7A;
+            --secondary: #2DCDDF;
+            --accent: #FF9A3C;
+            --dark: #0A1931;
+            --light: #F6F5F5;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation - Same as index.html */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo i {
+            color: var(--secondary);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+            background-color: rgba(26, 95, 122, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Impact Hero */
+        .impact-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .impact-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .impact-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Impact Stats */
+        .impact-stats {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        /* Stories Section */
+        .stories-section {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .story-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .story-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .story-content {
+            padding: 30px;
+        }
+        
+        .story-category {
+            display: inline-block;
+            background-color: rgba(26, 95, 122, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .story-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Video Testimonials */
+        .video-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .video-card {
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .video-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .video-content {
+            padding: 25px;
+        }
+        
+        .video-content h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        /* Impact Calculator */
+        .calculator-section {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 50px;
+            box-shadow: var(--shadow);
+        }
+        
+        .calculator-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+        
+        .calculator-results {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h3 {
+            color: var(--accent);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-col a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .impact-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .calculator-inputs {
+                grid-template-columns: 1fr;
+            }
+            
+            .calculator-container {
+                padding: 30px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <i class="fas fa-tint"></i>
+                    Maji<span>Safi</span>
+                </a>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="impact.html" class="active">Impact</a></li>
+                    <li><a href="invest.html">Invest</a></li>
+                    <li><a href="partner.html">Partner</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Impact Hero -->
+    <section class="impact-hero">
+        <div class="container">
+            <h1>Real Impact, Real Stories</h1>
+            <p>See how clean water is transforming lives, creating jobs, and building healthier communities across Africa</p>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="impact-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">500,000+</div>
+                    <div class="stat-label">People with Clean Water</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Reduction in Water-borne Diseases</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1,200+</div>
+                    <div class="stat-label">Jobs Created</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">25,000+</div>
+                    <div class="stat-label">Children Back in School</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stories Section -->
+    <section class="stories-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Success Stories</h2>
+                <p>Real people, real communities transformed by clean water</p>
+            </div>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-img" style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="story-content">
+                        <span class="story-category">Entrepreneurship</span>
+                        <h3>Naomi's Water Business</h3>
+                        <p>"Before Maji Safi Africa, I was selling 20 liters of water daily. Now I manage a Smart Water ATM selling 2,000 liters daily. I've hired 3 people and my children are in school."</p>
+                        <p><strong>Location:</strong> Nairobi, Kenya</p>
+                        <p><strong>Income Increase:</strong> 400% in 2 years</p>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-img" style="background-image: url('https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="story-content">
+                        <span class="story-category">Community Health</span>
+                        <h3>Cholera-Free Village</h3>
+                        <p>"Our village used to have cholera outbreaks every rainy season. Since the borehole was installed, we've had zero cases. Children are healthier and school attendance is up 40%."</p>
+                        <p><strong>Location:</strong> Rural Uganda</p>
+                        <p><strong>Health Improvement:</strong> 95% disease reduction</p>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-img" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="story-content">
+                        <span class="story-category">Women Empowerment</span>
+                        <h3>Women's Water Cooperative</h3>
+                        <p>"We started as 5 women managing one water point. Now we're 50 women managing 10 water points across our region. We've become community leaders and decision-makers."</p>
+                        <p><strong>Location:</strong> Tanzania</p>
+                        <p><strong>Members:</strong> 50 women entrepreneurs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Testimonials -->
+    <section class="video-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Video Testimonials</h2>
+                <p>Hear directly from the communities we serve</p>
+            </div>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="video-content">
+                        <h3>Naomi's Success Story</h3>
+                        <p>From water vendor to business owner in Nairobi slums</p>
+                        <button onclick="playVideo('naomi')" style="margin-top: 15px; padding: 8px 20px; background-color: var(--primary); color: white; border: none; border-radius: var(--border-radius); cursor: pointer;">Watch Video</button>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="video-content">
+                        <h3>Community Transformation</h3>
+                        <p>How clean water changed an entire village in Uganda</p>
+                        <button onclick="playVideo('community')" style="margin-top: 15px; padding: 8px 20px; background-color: var(--primary); color: white; border: none; border-radius: var(--border-radius); cursor: pointer;">Watch Video</button>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="video-content">
+                        <h3>Investor Perspective</h3>
+                        <p>Why impact investors choose Maji Safi Africa</p>
+                        <button onclick="playVideo('investor')" style="margin-top: 15px; padding: 8px 20px; background-color: var(--primary); color: white; border: none; border-radius: var(--border-radius); cursor: pointer;">Watch Video</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Calculator -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Impact Calculator</h2>
+                <p>See how your investment creates measurable change</p>
+            </div>
+            <div class="calculator-container">
+                <div class="calculator-inputs">
+                    <div class="input-group">
+                        <label for="investmentAmount">Investment Amount ($)</label>
+                        <input type="range" id="investmentAmount" min="1000" max="100000" value="10000" step="1000">
+                        <div class="range-value" id="amountValue">$10,000</div>
+                    </div>
+                    <div class="input-group">
+                        <label for="investmentPeriod">Investment Period (Years)</label>
+                        <input type="range" id="investmentPeriod" min="1" max="10" value="5" step="1">
+                        <div class="range-value" id="periodValue">5 years</div>
+                    </div>
+                </div>
+                
+                <div class="calculator-results">
+                    <h3>Your Impact</h3>
+                    <div class="result-value" id="impactValue">500 People</div>
+                    <p>Your investment of <span id="initialAmount">$10,000</span> will provide clean water to <span id="peopleServed">500</span> people for <span id="selectedYears">5</span> years</p>
+                    <p><strong>Additional Benefits:</strong></p>
+                    <ul style="text-align: left; margin-top: 15px;">
+                        <li><span id="hoursSaved">75,000</span> hours saved for women & girls</li>
+                        <li><span id="diseasesPrevented">250</span> water-borne diseases prevented</li>
+                        <li><span id="childrenInSchool">50</span> children can attend school</li>
+                        <li><span id="jobsCreated">2</span> local jobs created</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Maji Safi Africa</h3>
+                    <p>Providing clean water and health services to millions across Africa through sustainable business models.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="solutions.html">Solutions</a></li>
+                        <li><a href="impact.html">Impact Stories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Investments</h3>
+                    <ul>
+                        <li><a href="invest.html">Investment Opportunities</a></li>
+                        <li><a href="#">Returns Calculator</a></li>
+                        <li><a href="#">Portfolio Performance</a></li>
+                        <li><a href="#">Investor Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+                        <li><i class="fas fa-phone"></i> +254 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> info@majisafiafrica.co.ke</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Maji Safi Africa. All rights reserved. | Clean Water for All</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Impact Calculator
+        const investmentAmount = document.getElementById('investmentAmount');
+        const investmentPeriod = document.getElementById('investmentPeriod');
+        
+        const amountValue = document.getElementById('amountValue');
+        const periodValue = document.getElementById('periodValue');
+        const impactValue = document.getElementById('impactValue');
+        const initialAmount = document.getElementById('initialAmount');
+        const peopleServed = document.getElementById('peopleServed');
+        const selectedYears = document.getElementById('selectedYears');
+        const hoursSaved = document.getElementById('hoursSaved');
+        const diseasesPrevented = document.getElementById('diseasesPrevented');
+        const childrenInSchool = document.getElementById('childrenInSchool');
+        const jobsCreated = document.getElementById('jobsCreated');
+        
+        function updateCalculator() {
+            const amount = parseInt(investmentAmount.value);
+            const years = parseInt(investmentPeriod.value);
+            
+            // Format amount with commas
+            const formattedAmount = amount.toLocaleString();
+            amountValue.textContent = `$${formattedAmount}`;
+            periodValue.textContent = `${years} year${years > 1 ? 's' : ''}`;
+            
+            // Calculate impact metrics
+            const people = Math.round(amount / 20); // $20 per person served
+            const hours = people * 150 * years; // 150 hours saved per person per year
+            const diseases = Math.round(people * 0.5 * years); // 0.5 diseases prevented per person per year
+            const children = Math.round(people * 0.1); // 10% are school-age children
+            const jobs = Math.round(people / 250); // 1 job per 250 people served
+            
+            impactValue.textContent = `${people.toLocaleString()} People`;
+            initialAmount.textContent = `$${formattedAmount}`;
+            peopleServed.textContent = people.toLocaleString();
+            selectedYears.textContent = years;
+            hoursSaved.textContent = hours.toLocaleString();
+            diseasesPrevented.textContent = diseases.toLocaleString();
+            childrenInSchool.textContent = children.toLocaleString();
+            jobsCreated.textContent = jobs.toLocaleString();
+        }
+        
+        investmentAmount.addEventListener('input', updateCalculator);
+        investmentPeriod.addEventListener('input', updateCalculator);
+        
+        // Initialize calculator
+        updateCalculator();
+        
+        // Video Play Function
+        function playVideo(videoId) {
+            alert(`Playing ${videoId} video\n\nIn a full implementation, this would open a video modal or redirect to YouTube/Vimeo.`);
+        }
+        
+        // Add active class to current page
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            if(link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
